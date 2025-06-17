@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>A Special Surprise 🎁</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(to bottom, #c9d6ff, #e2e2e2);
+      font-family: 'Segoe UI', sans-serif;
+      overflow: hidden;
+      animation: bodyFade 2s ease-in;
+    }
+
+    .container {
+      text-align: center;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      text-shadow: 0 0 10px rgba(79, 172, 254, 0.5);
+      margin-bottom: 10px;
+      animation: glowText 3s ease-in-out infinite alternate;
+    }
+
+    .subtext {
+      font-size: 1.1rem;
+      color: #555;
+      margin-top: 5px;
+      margin-bottom: 20px;
+      animation: fadeIn 3s ease-in;
+    }
+
+    .envelope-icon {
+      font-size: 5rem;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .btn {
+      margin-top: 30px;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      color: white;
+      background: linear-gradient(to right, #00f2fe, #4facfe);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+      transition: transform 0.3s ease, background 0.3s ease;
+      text-decoration: none;
+      display: inline-block;
+    }
+
+    .btn:hover {
+      transform: scale(1.05);
+      background: linear-gradient(to right, #4facfe, #00f2fe);
+    }
+
+    /* Animations */
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-15px); }
+    }
+
+    @keyframes glowText {
+      0% { text-shadow: 0 0 5px rgba(79, 172, 254, 0.4); }
+      100% { text-shadow: 0 0 20px rgba(79, 172, 254, 1); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bodyFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes fall {
+      to {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+
+    .heart {
+      position: fixed;
+      top: -50px;
+      font-size: 20px;
+      opacity: 0.6;
+      animation: fall linear infinite;
+      z-index: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div class="envelope-icon">💌</div>
+    <h1>Someone left you a message...</h1>
+    <p class="subtext">It’s waiting for you…</p>
+    <a href="greeting-card.html" class="btn">Open the Card</a>
+  </div>
+
+  <script>
+    // Floating heart animation
+    const colors = ['#ff6b6b', '#ff8e8e', '#ffb3b3'];
+    for (let i = 0; i < 20; i++) {
+      const heart = document.createElement('div');
+      heart.innerHTML = '💖';
+      heart.classList.add('heart');
+      heart.style.left = Math.random() * 100 + 'vw';
+      heart.style.fontSize = (Math.random() * 24 + 12) + 'px';
+      heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+      heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+      document.body.appendChild(heart);
+    }
+  </script>
+
+</body>
+</html>
