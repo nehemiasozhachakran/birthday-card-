@@ -10,7 +10,7 @@
       padding: 0;
       font-family: 'Arial', sans-serif;
       height: 100vh;
-      background: url('https://images7.alphacoders.com/834/834348.jpg') no-repeat center center fixed;
+      background: url('4b3cbe58-5e2c-4986-a02d-546f4b1c5d62.png') no-repeat center center fixed;
       background-size: cover;
       display: flex;
       align-items: center;
@@ -21,7 +21,7 @@
     .card-container {
       width: 90%;
       max-width: 600px;
-      background-color: rgba(255, 255, 255, 0.95);
+      background-color: rgba(255,255,255,0.05);
       border-radius: 10px;
       box-shadow: 0 20px 40px rgba(0,0,0,0.3);
       position: relative;
@@ -32,28 +32,36 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      background: linear-gradient(45deg, #ff9a9e 0%, #fad0c4 100%);
-      color: white;
+      background: url('4b3cbe58-5e2c-4986-a02d-546f4b1c5d62.png') center/cover no-repeat;
       display: flex;
       flex-direction: column;
-      justify-content: center;
       align-items: center;
-      cursor: pointer;
+      justify-content: center;
+      text-align: center;
       z-index: 10;
+      cursor: pointer;
       transition: transform 1s ease-in-out;
       transform-origin: top center;
+      box-shadow: inset 0 0 0 2000px rgba(255,192,203,0.15);
+      backdrop-filter: blur(4px);
+      border-radius: 10px;
     }
 
     .card-cover h1 {
-      font-size: 2.2rem;
-      margin-bottom: 10px;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-      animation: pulse 2s infinite;
+      font-size: 2.5rem;
+      background: linear-gradient(90deg, #ff6b6b, #ffc3a0, #ff6b6b);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: gradientMove 4s linear infinite;
+      font-weight: bold;
     }
 
     .card-cover p {
-      font-size: 1.2rem;
-      animation: float 3s ease-in-out infinite;
+      font-size: 1.1rem;
+      margin-top: 10px;
+      color: white;
+      text-shadow: 0 0 10px rgba(0,0,0,0.3);
+      animation: fadeInUp 2s ease-out infinite alternate;
     }
 
     .card-content {
@@ -63,8 +71,10 @@
       box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      overflow-y: auto;
-      background: white;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(6px);
+      border-radius: 10px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
     }
 
     .card-content h2 {
@@ -84,13 +94,6 @@
       color: #333;
       line-height: 1.6;
       margin-bottom: 12px;
-    }
-
-    .birthday-icon {
-      font-size: 2.5rem;
-      text-align: center;
-      margin: 15px 0;
-      animation: bounce 2s infinite;
     }
 
     .signature {
@@ -133,19 +136,14 @@
       transform: scaleY(0);
     }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 20px #ffc0cb, 0 0 30px #fff; }
     }
 
-    @keyframes bounce {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-10px); }
-    }
-
-    @keyframes pulse {
-      0%, 100% { transform: scale(1); }
-      50% { transform: scale(1.05); }
+    @keyframes fadeInUp {
+      from { opacity: 0.5; transform: translateY(5px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
     @keyframes blink {
@@ -169,15 +167,14 @@
 <body>
   <div class="card-container" id="card">
     <div class="card-cover" onclick="openCard()">
-      <h1>Happy Birthday</h1>
+      <h1>💖 A Note Just For You</h1>
       <p>Tap to Open ▼</p>
     </div>
     <div class="card-content">
       <h2>Happy Birthday, Nesha 🎉</h2>
-      <div class="birthday-icon">🎂🎈🎁</div>
       <p>Today is all about you — your smile, your kindness, and the light you bring into this world.</p>
-      <p>I may not know where we stand right now…<br>But one thing hasn’t changed — I still remember you. I still value the friendship we shared.</p>
-      <p>On your special day, I wish you endless happiness, peace, and love.<br>May every dream you hold close come true this year.</p>
+      <p>I may not know where we stand right now… But one thing hasn’t changed — I still remember you. I still value the friendship we shared.</p>
+      <p>On your special day, I wish you endless happiness, peace, and love. May every dream you hold close come true this year.</p>
       <p>And quietly, in my heart, I also hope… that one day, we’ll talk again — not as strangers, but as two people who once cared.</p>
       <p>Until then, I’ll keep cheering for you from afar.</p>
       <div class="signature">— Your friend, Nehemia</div>
@@ -195,50 +192,7 @@
       document.getElementById('card').classList.add('opened');
       document.querySelector('.tap-hint').style.display = 'none';
       document.querySelector('.back-button').style.display = 'inline-block';
-
-      // Play music
-      document.getElementById('bg-music').play().catch(() => {
-        console.log("Music blocked by browser until user interacts.");
-      });
-
-      // Falling hearts
-      for (let i = 0; i < 20; i++) {
-        const heart = document.createElement('div');
-        heart.innerHTML = '❤️';
-        heart.style.position = 'fixed';
-        heart.style.fontSize = (Math.random() * 20 + 10) + 'px';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.top = '-50px';
-        heart.style.zIndex = '100';
-        heart.style.opacity = '0.8';
-        heart.style.animation = `fall-${i} ${Math.random() * 3 + 2}s linear forwards`;
-        document.body.appendChild(heart);
-
-        const keyframes = `
-          @keyframes fall-${i} {
-            to {
-              transform: translateY(100vh) rotate(${Math.random() * 360}deg);
-              opacity: 0;
-            }
-          }
-        `;
-        const style = document.createElement('style');
-        style.innerHTML = keyframes;
-        document.head.appendChild(style);
-      }
-
-      // Balloons
-      for (let i = 0; i < 10; i++) {
-        const balloon = document.createElement('div');
-        balloon.innerHTML = '🎈';
-        balloon.style.position = 'fixed';
-        balloon.style.left = Math.random() * 100 + 'vw';
-        balloon.style.bottom = '-50px';
-        balloon.style.fontSize = '2rem';
-        balloon.style.animation = `rise ${6 + Math.random() * 2}s linear forwards`;
-        document.body.appendChild(balloon);
-        setTimeout(() => balloon.remove(), 8000);
-      }
+      document.getElementById('bg-music').play().catch(() => {});
     }
 
     function goBack() {
