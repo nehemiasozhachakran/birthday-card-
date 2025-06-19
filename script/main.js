@@ -1,14 +1,22 @@
-// Auto play music and start animation on page load
+// trigger to play music in the background with sweetalert
 window.addEventListener('load', () => {
-    const song = document.querySelector('.song');
-    song.play().catch(() => {
-        // Autoplay may be blocked on some mobile browsers
-        console.warn('Autoplay was blocked. Music will not play until user interacts.');
+    Swal.fire({
+        title: 'Do you want to play music in the background?',
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes',
+        cancelButtonText: 'No',
+    }).then((result) => {
+        if (result.isConfirmed) {
+            document.querySelector('.song').play();
+            animationTimeline();
+        } else {
+            animationTimeline();
+        }
     });
-
-    animationTimeline();
 });
-
 // animation timeline
 const animationTimeline = () => {
     const textBoxChars = document.getElementsByClassName("hbd-chatbox")[0];
