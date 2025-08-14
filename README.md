@@ -15,17 +15,23 @@ This project features smooth animations, floating hearts, background music, and 
 - 🌐 **No Installation Needed** – Runs directly in any modern browser  
 
 ---
-
 ## 📂 Project Structure
 
 birthday-card-
 │
-├── img/ # Images and icons
-├── music/ # Background music file
-├── script/ # JavaScript files
-├── style/ # CSS stylesheets
-├── index.html # Main invitation page
-└── README.md # Project documentation
+├── img/                # Folder for images, icons, and graphics
+│
+├── music/              # Folder for background music or sound effects
+│
+├── script/             # JavaScript files
+│   └── main.js         # Handles card animations, music controls, and interactions
+│
+├── style/              # CSS stylesheets
+│
+├── index.html          # Main HTML page (birthday invitation / entry page)
+│
+└── README.md           # Project documentation
+
 
 ---
 
